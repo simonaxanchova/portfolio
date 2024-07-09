@@ -27,7 +27,7 @@ export default function Header() {
               fontSize: "20px",
             }}
           >
-            Simona Anchova
+            Simona Anchova ©
           </Typography>
         </Grid>
         <Grid
