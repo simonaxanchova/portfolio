@@ -36,3 +36,33 @@
     transform: rotate(360deg);
   }
 }
+
+@font-face {
+  font-family: "NeueHaasDisplayLight";
+  src: local("NeueHaasDisplayLight"),
+    url("./../public/assets/fonts/NeueHaasDisplayLight.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "NeueHaasDisplayMedium";
+  src: local("NeueHaasDisplayMedium"),
+    url("./../public/assets/fonts/NeueHaasDisplayMedium.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "NeueHaasDisplayRoman";
+  src: local("NeueHaasDisplayRoman"),
+    url("./../public/assets/fonts/NeueHaasDisplayRoman.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "NeueHaasDisplayBold";
+  src: local("NeueHaasDisplayBold"),
+    url("./../public/assets/fonts/NeueHaasDisplayBold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Supply-Regular";
+  src: local("Supply-Regular"),
+    url("./../public/assets/fonts/Supply-Regular.otf") format("truetype");
+}
