@@ -14,12 +14,10 @@ export default function Contact({
     <Grid
       item
       xs={12}
-      className="glassmorphism"
       style={{
         backgroundColor: "#f4f9ff",
         padding: "40px",
         display: "flex",
-        height: "800px",
       }}
     >
       <Grid item xs={0.5} />

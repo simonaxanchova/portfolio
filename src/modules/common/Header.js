@@ -54,7 +54,7 @@ export default function Header({ loading }) {
       flexDirection: "column",
       opacity: 0,
       transition: "opacity 0.3s ease",
-      backgroundColor: "white", // Background to cover original text
+      backgroundColor: "white",
     },
     hoverEffectVisible: {
       opacity: 1,
@@ -159,58 +159,60 @@ export default function Header({ loading }) {
             </div>
           </Hidden>
           <Hidden smUp>
-            <Grid
-              container
-              alignItems="center"
-              style={{
-                height: "100%",
-                marginTop: "10px",
-                display: "flex",
-              }}
-            >
-              <Grid item xs={0.5} />
+            <div style={styles.headerOverlay}>
               <Grid
-                item
-                xs={11}
+                container
+                alignItems="center"
                 style={{
+                  height: "100%",
+                  marginTop: "10px",
                   display: "flex",
-                  justifyContent: "space-around",
-                  alignItems: "center",
                 }}
               >
-                <Typography
+                <Grid item xs={0.5} />
+                <Grid
+                  item
+                  xs={11}
                   style={{
-                    fontFamily: "NeueHaasDisplayLight",
-                    fontSize: "18px",
-                    marginRight: "50px",
+                    display: "flex",
+                    justifyContent: "space-around",
+                    alignItems: "center",
                   }}
                 >
-                  Simona Anchova
-                </Typography>
-                <Typography
-                  style={styles.typography}
-                  onMouseEnter={() => setHovered(true)}
-                  onMouseLeave={() => setHovered(false)}
-                  onClick={() => dispatch(openMenu(true))}
-                  sx={{ textAlign: "right" }}
-                >
-                  Menu
-                  <div
+                  <Typography
                     style={{
-                      ...styles.hoverEffect,
-                      ...(hovered && styles.hoverEffectVisible),
+                      fontFamily: "NeueHaasDisplayLight",
+                      fontSize: "18px",
+                      marginRight: "50px",
                     }}
                   >
+                    Simona Anchova
+                  </Typography>
+                  <Typography
+                    style={styles.typography}
+                    onMouseEnter={() => setHovered(true)}
+                    onMouseLeave={() => setHovered(false)}
+                    onClick={() => dispatch(openMenu(true))}
+                    sx={{ textAlign: "right" }}
+                  >
                     Menu
-                    <br />
-                    Menu
-                    <br />
-                    Menu
-                  </div>
-                </Typography>
+                    <div
+                      style={{
+                        ...styles.hoverEffect,
+                        ...(hovered && styles.hoverEffectVisible),
+                      }}
+                    >
+                      Menu
+                      <br />
+                      Menu
+                      <br />
+                      Menu
+                    </div>
+                  </Typography>
+                </Grid>
+                <Grid item xs={0.5} />
               </Grid>
-              <Grid item xs={0.5} />
-            </Grid>
+            </div>
           </Hidden>
         </>
       )}

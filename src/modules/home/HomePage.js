@@ -22,6 +22,8 @@ import { emailSent, homePageHeader } from "../../store/GlobalSlice";
 import emailjs from "emailjs-com";
 import Contact from "./Contact";
 import _ from "lodash";
+import HomePageMobile from "./HomePageMobile";
+import { CiClock1 } from "react-icons/ci";
 
 const moveText = keyframes`
   0% {
@@ -33,7 +35,7 @@ const moveText = keyframes`
 `;
 
 const MovingText = styled("span")(({ theme }) => ({
-  display: "inline-flex", // Use inline-flex to align items properly
+  display: "inline-flex",
   alignItems: "center",
   animation: `${moveText} 8s linear infinite`,
 }));
@@ -147,9 +149,22 @@ export default function HomePage({ loading, setLoading }) {
     setFormData(_.set({ ...formData }, name, value));
   };
 
+  const [time, setTime] = useState(new Date());
+
   useEffect(() => {
-    console.log(formData);
-  }, [formData]);
+    const intervalId = setInterval(() => {
+      setTime(new Date());
+    }, 1000);
+
+    return () => clearInterval(intervalId);
+  }, []);
+
+  const formatTime = (date) => {
+    const hours = String(date.getHours()).padStart(2, "0");
+    const minutes = String(date.getMinutes()).padStart(2, "0");
+    const seconds = String(date.getSeconds()).padStart(2, "0");
+    return `${hours}:${minutes}:${seconds}`;
+  };
 
   return (
     <>
@@ -616,341 +631,131 @@ export default function HomePage({ loading, setLoading }) {
                   formData={formData}
                   emailAlertMessage={emailAlertMessage}
                 />
-              </Grid>
-            </div>
-          </Hidden>
-          <Hidden smUp>
-            <Grid container style={{ marginTop: "10px" }}>
-              <Grid item xs={0.5} />
-              <Grid
-                item
-                xs={11}
-                style={{
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <Grid
-                  item
-                  xs={12}
-                  style={{
-                    textAlign: "left",
-                    border: "1px solid #ced4da",
-                    padding: "20px",
-                    width: "100%",
-                  }}
-                >
-                  <Typography
-                    style={{
-                      fontFamily: "NeueHaasDisplayRoman",
-                      fontSize: "16px",
-                    }}
+                <Grid container style={{ backgroundColor: "#f4f9ff" }}>
+                  <Grid
+                    item
+                    xs={12}
+                    style={{ display: "flex", textAlign: "left" }}
                   >
-                    Working as
-                  </Typography>
-                  <Typography
-                    style={{
-                      fontFamily: "FFF-AcidGrotesk-ExtraBold",
-                      fontSize: "25px",
-                      whiteSpace: "nowrap",
-                    }}
-                  >
-                    SOFTWARE ENGINEER
-                  </Typography>
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      width: "90px",
-                      height: "35px",
-                      color: "#000000",
-                      fontSize: "12px",
-                      fontWeight: "bold",
-                      border: "2px solid black",
-                      backgroundColor: "#b8ff5e",
-                      fontFamily: "NeueHaasDisplayLight",
-                      fontSize: "18px",
-                    }}
-                  >
-                    @ Aucta
-                  </div>
-                </Grid>
-                <Grid
-                  item
-                  xs={12}
-                  style={{
-                    textAlign: "left",
-                    borderBottom: "1px solid #ced4da",
-                    borderRight: "1px solid #ced4da",
-                    borderLeft: "1px solid #ced4da",
-                    padding: "10px",
-                    width: "100%",
-                  }}
-                >
-                  <Typography
-                    style={{
-                      fontFamily: "NeueHaasDisplayRoman",
-                      fontSize: "16px",
-                    }}
-                  >
-                    Education
-                  </Typography>
-                  <Typography
-                    style={{
-                      fontFamily: "NeueHaasDisplayLight",
-                      fontSize: "22px",
-                    }}
-                  >
-                    Bachelor of Computer Science
-                  </Typography>
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      width: "90%",
-                      height: "55px",
-                      color: "#000000",
-                      fontSize: "12px",
-                      fontWeight: "bold",
-                      border: "2px solid black",
-                      backgroundColor: "#b8ff5e",
-                      fontFamily: "NeueHaasDisplayLight",
-                      fontSize: "18px",
-                      padding: "10px",
-                    }}
-                  >
-                    @ Faculty of Computer Science and Engineering, Skopje
-                  </div>
-                </Grid>
-              </Grid>
-              <Grid item xs={12}>
-                <SceneContent />
-              </Grid>
-              <Grid
-                item
-                xs={12}
-                style={{
-                  backgroundColor: "#d6dbe1",
-                  width: "100%",
-                }}
-              >
-                <Grid
-                  item
-                  xs={12}
-                  style={{
-                    backgroundColor: "#d6dbe1",
-                    width: "100%",
-                    textAlign: "center",
-                    fontFamily: "NeueHaasDisplayLight",
-                    fontSize: "40px",
-                    textTransform: "uppercase",
-                  }}
-                >
-                  <MovingTextContainer>
-                    <MovingText>
-                      <span
-                        style={{
-                          fontFamily: "PPPangaia-Medium",
-                          fontSize: "42px",
-                          verticalAlign: "middle",
-                        }}
-                      >
-                        F
-                      </span>
-                      eatured w
-                      <CiGlobe
-                        style={{ fontSize: "45px", verticalAlign: "middle" }}
-                      />
-                      rk
-                    </MovingText>
-                  </MovingTextContainer>
-                </Grid>
-                <Grid
-                  item
-                  xs={12}
-                  style={{ padding: "20px", textAlign: "left" }}
-                >
-                  <Typography
-                    style={{
-                      fontFamily: "NeueHaasDisplayMedium",
-                      textTransform: "uppercase",
-                      fontSize: "18px",
-                      color: "#1f1f1f",
-                    }}
-                  >
-                    What I can do
-                  </Typography>
-                  <div
-                    style={{
-                      display: "flex",
-                      flexWrap: "wrap",
-                      justifyContent: "space-between",
-                      width: "70%",
-                    }}
-                  >
-                    <Typography
+                    <Grid item xs={1} />
+                    <Grid
+                      item
+                      xs={10}
                       style={{
-                        fontFamily: "NeueHaasDisplayLight",
-                        textTransform: "none",
-                        fontSize: "18px",
-                        color: "#1f1f1f",
+                        justifyContent: "space-between",
+                        display: "flex",
                       }}
                     >
-                      Web Development
-                    </Typography>
-                    <Typography
-                      style={{
-                        fontFamily: "NeueHaasDisplayLight",
-                        textTransform: "none",
-                        fontSize: "18px",
-                        color: "#1f1f1f",
-                      }}
-                    >
-                      Web Design
-                    </Typography>
-                  </div>
-                </Grid>
-                <Grid
-                  item
-                  xs={12}
-                  style={{ padding: "20px", textAlign: "left" }}
-                >
-                  <Typography
-                    style={{
-                      fontFamily: "NeueHaasDisplayMedium",
-                      textTransform: "uppercase",
-                      fontSize: "18px",
-                      color: "#1f1f1f",
-                    }}
-                  >
-                    Technical skills
-                  </Typography>
-                  <div
-                    style={{
-                      display: "flex",
-                      flexWrap: "wrap",
-                      justifyContent: "space-between",
-                      width: "100%",
-                    }}
-                  >
-                    {technical?.map((tech, index) => (
                       <Typography
-                        key={index}
                         style={{
                           fontFamily: "NeueHaasDisplayLight",
-                          textTransform: "none",
-                          fontSize: "17px",
-                          color: "#1f1f1f",
+                          fontSize: "16px ",
                           marginLeft: "5px",
                         }}
                       >
-                        {tech}
+                        © Simona Anchova
                       </Typography>
-                    ))}
-                  </div>
+                      <Typography
+                        style={{
+                          fontFamily: "NeueHaasDisplayLight",
+                          fontSize: "16px ",
+                          marginRight: "5px",
+                          cursor: "pointer",
+                        }}
+                        onClick={() =>
+                          window.open(
+                            "https://www.linkedin.com/in/simonaxanchova/",
+                            "_blank"
+                          )
+                        }
+                      >
+                        LINKEDIN
+                      </Typography>
+                      <Typography
+                        style={{
+                          fontFamily: "NeueHaasDisplayLight",
+                          fontSize: "16px ",
+                          marginRight: "5px",
+                          cursor: "pointer",
+                        }}
+                        onClick={() =>
+                          window.open(
+                            "https://www.behance.net/simonaxanchova",
+                            "_blank"
+                          )
+                        }
+                      >
+                        BEHANCE
+                      </Typography>
+                    </Grid>
+                  </Grid>
+                  <Grid item xs={12} style={{ display: "flex" }}>
+                    <Grid item xs={1} />
+                    <Grid
+                      item
+                      xs={10}
+                      style={{
+                        borderBottom: "1px solid #ced4da",
+                        borderLeft: "1px solid #ced4da",
+                        borderRight: "1px solid #ced4da",
+                        borderBottomLeftRadius: "5px",
+                        borderBottomRightRadius: "5px",
+                        position: "relative",
+                        height: "20px",
+                        marginBottom: "10px",
+                      }}
+                    >
+                      <div
+                        style={{
+                          position: "absolute",
+                          bottom: "3px",
+                          left: "-1px",
+                          width: "1px",
+                          height: "10px",
+                          backgroundColor: "#ced4da",
+                          borderTopLeftRadius: "1px",
+                        }}
+                      />
+
+                      <div
+                        style={{
+                          position: "absolute",
+                          bottom: "3px",
+                          right: "-1px",
+                          width: "1px",
+                          height: "10px",
+                          backgroundColor: "#ced4da",
+                          borderTopRightRadius: "1px",
+                        }}
+                      />
+                    </Grid>
+                    <Grid item xs={1}>
+                      <Typography
+                        style={{
+                          fontFamily: "NeueHaasDisplayLight",
+                          fontSize: "16px ",
+                          justifyContent: "center",
+                          display: "flex",
+                          alignItems: "center",
+                        }}
+                      >
+                        <CiClock1 style={{ marginRight: "5px" }} />
+                        {formatTime(time)}
+                      </Typography>
+                    </Grid>
+                  </Grid>
                 </Grid>
-                <div style={{ padding: "20px" }}>
-                  {projects?.map((project) => (
-                    <div style={{ marginTop: "10px" }}>
-                      <Grid
-                        item
-                        xs={12}
-                        style={{
-                          textAlign: "left",
-                          border: "1px solid #171718",
-                          padding: "10px",
-                        }}
-                      >
-                        <div style={{ float: "right" }}>
-                          <div
-                            style={{
-                              display: "flex",
-                              alignItems: "center",
-                              justifyContent: "center",
-                              width: "120px",
-                              height: "30px",
-                              color: "#000000",
-                              fontSize: "12px",
-                              fontWeight: "bold",
-                              border: "1px solid black",
-                              backgroundColor: "#b8ff5e",
-                              fontFamily: "NeueHaasDisplayLight",
-                              fontSize: "16px",
-                              transform: "rotate(5deg)",
-                            }}
-                          >
-                            Made at Aucta
-                          </div>
-                        </div>
-                        <Typography
-                          style={{
-                            fontFamily: "NeueHaasDisplayRomanItalic",
-                            fontSize: "22px",
-                          }}
-                        >
-                          {project.title}
-                        </Typography>
-                        <Typography
-                          style={{
-                            fontFamily: "NeueHaasDisplayLight",
-                            fontSize: "14px",
-                            textTransform: "uppercase",
-                          }}
-                        >
-                          {project.date}
-                        </Typography>
-                      </Grid>
-                      <Grid
-                        item
-                        xs={12}
-                        style={{
-                          textAlign: "left",
-                          borderBottom: "1px solid #171718",
-                          borderRight: "1px solid #171718",
-                          borderLeft: "1px solid #171718",
-                          padding: "10px",
-                        }}
-                      >
-                        <Typography
-                          style={{
-                            fontFamily: "NeueHaasDisplayLight",
-                            fontSize: "16px",
-                          }}
-                        >
-                          {project.info1}
-                        </Typography>
-                        <br />
-                        <Typography
-                          style={{
-                            fontFamily: "NeueHaasDisplayLight",
-                            fontSize: "16px",
-                          }}
-                        >
-                          {project.info2}
-                        </Typography>
-                        <Typography
-                          style={{
-                            fontFamily: "NeueHaasDisplayLight",
-                            fontSize: "16px",
-                            marginTop: "15px",
-                            display: "flex",
-                            alignItems: "center",
-                          }}
-                        >
-                          <RxOpenInNewWindow
-                            style={{ fontSize: "22px", marginRight: "5px" }}
-                          />
-                          View project
-                        </Typography>
-                      </Grid>
-                    </div>
-                  ))}
-                </div>
               </Grid>
-            </Grid>
+            </div>
           </Hidden>
+          <HomePageMobile
+            technical={technical}
+            projects={projects}
+            emailAlertMessage={emailAlertMessage}
+            formData={formData}
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+          />
         </>
       )}
     </>
