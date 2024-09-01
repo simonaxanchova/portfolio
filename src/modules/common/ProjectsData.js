@@ -10,6 +10,7 @@ export const ProjectsData = [
     backend: "Spring Boot",
     frontend: "React",
     database: "Oracle",
+    type: "work",
   },
   {
     id: 2,
@@ -22,5 +23,20 @@ export const ProjectsData = [
     backend: "Spring Boot",
     frontend: "React",
     database: "PostgreSQL",
+    type: "work",
+  },
+
+  {
+    id: 3,
+    title: "Simona Anchova Portfolio Website",
+    date: "July 2024",
+    info1:
+      "Desiging and fully developing a personal portfolio website to showcase my work and experience.",
+    info2:
+      "The website is designed to be responsive and user-friendly, with a focus on providing a seamless user experience.",
+    backend: "",
+    frontend: "React, Redux.js, Three.js, Email.js, Material-UI",
+    database: "",
+    type: "personal",
   },
 ];

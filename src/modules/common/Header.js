@@ -1,11 +1,9 @@
-import { Grid, Hidden, IconButton, Typography } from "@mui/material";
+import { Grid, Hidden, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { IoCloseOutline } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
-import { openMenu } from "../../store/GlobalSlice";
+import { goToPosition, openMenu } from "../../store/GlobalSlice";
 import { SETTINGS } from "../../Settings";
 import { changeLanguage } from "../properties/Locale";
-import HeaderMenu from "./HeaderMenu";
 import { Outlet } from "react-router-dom";
 
 export default function Header({ loading }) {
@@ -21,10 +19,6 @@ export default function Header({ loading }) {
     setCurrentLanguageIndex((prevIndex) => (prevIndex + 1) % languages.length);
     changeLanguage(languages[currentLanguageIndex].key);
   };
-
-  useEffect(() => {
-    console.log(homeHeader);
-  }, [homeHeader]);
 
   const styles = {
     typography: {
@@ -65,11 +59,32 @@ export default function Header({ loading }) {
       left: 0,
       width: "100%",
       height: "80px",
-      backdropFilter: homeHeader ? "blur(10px)" : "none",
-      backgroundColor: homeHeader ? "rgba(255, 255, 255, 0.5)" : "transparent",
+      backdropFilter: homeHeader && !isMenuOpen ? "blur(10px)" : "none",
+      backgroundColor:
+        homeHeader && !isMenuOpen ? "rgba(255, 255, 255, 0.5)" : "transparent",
       zIndex: 999,
     },
   };
+
+  const menuItems = [
+    {
+      id: 1,
+      name: "Featured work",
+      offsetPosition: 650,
+    },
+    {
+      id: 2,
+      name: "Contact",
+    },
+    {
+      id: 3,
+      name: "About",
+    },
+  ];
+
+  useEffect(() => {
+    console.log(window.pageYOffset);
+  }, [window.pageYOffset]);
 
   return (
     <>
@@ -79,9 +94,15 @@ export default function Header({ loading }) {
             <div style={styles.headerOverlay}>
               <Grid
                 container
-                alignItems="center"
                 style={{
-                  height: "100%",
+                  height: !isMenuOpen ? "100%" : "250px",
+                  backdropFilter: isMenuOpen ? "blur(10px)" : "none",
+                  backgroundColor: isMenuOpen
+                    ? "rgba(255, 255, 255, 0.5)"
+                    : "transparent",
+                  alignItems: "start",
+                  //  border: "1px solid red",
+                  zIndex: 999,
                 }}
               >
                 <Grid item xs={1} />
@@ -96,6 +117,7 @@ export default function Header({ loading }) {
                     style={{
                       fontFamily: "NeueHaasDisplayLight",
                       fontSize: "18px",
+                      marginTop: "15px",
                     }}
                   >
                     Simona Anchova
@@ -111,12 +133,11 @@ export default function Header({ loading }) {
                 ></Grid>
                 <Grid
                   item
-                  xs={2}
+                  xs={1.5}
                   style={{
                     display: "flex",
-                    alignItems: "center",
                     justifyContent: "flex-end",
-                    paddingRight: "20px",
+                    marginTop: "15px",
                   }}
                 >
                   <Typography
@@ -124,7 +145,6 @@ export default function Header({ loading }) {
                     style={{
                       fontSize: "16px",
                       fontFamily: "NeueHaasDisplayRoman",
-                      paddingRight: "20px",
                       textAlign: "right",
                       whiteSpace: "nowrap",
                       cursor: "pointer",
@@ -132,11 +152,21 @@ export default function Header({ loading }) {
                   >
                     ● {languages[currentLanguageIndex].name}
                   </Typography>
+                </Grid>
+                <Grid
+                  item
+                  xs={0.5}
+                  style={{
+                    display: "flex",
+                    justifyContent: "flex-end",
+                    marginTop: "5px",
+                  }}
+                >
                   <Typography
                     style={styles.typography}
                     onMouseEnter={() => setHovered(true)}
                     onMouseLeave={() => setHovered(false)}
-                    onClick={() => dispatch(openMenu(true))}
+                    onClick={() => dispatch(openMenu(!isMenuOpen))}
                   >
                     Menu
                     <div
@@ -154,6 +184,65 @@ export default function Header({ loading }) {
                   </Typography>
                 </Grid>
                 <Grid item xs={1} />
+                {isMenuOpen && (
+                  <Grid item xs={12} style={{ display: "flex" }}>
+                    <Grid item xs={9} />
+                    <Grid item xs={2} style={{ textAlign: "right" }}>
+                      {menuItems.map((item) => (
+                        <Typography
+                          key={item.id}
+                          style={{
+                            fontFamily: "NeueHaasDisplayLight",
+                            fontSize: "16px",
+                            marginRight: "5px",
+                            cursor: "pointer",
+                          }}
+                          onClick={() => {
+                            if (item.name === "Contact") {
+                              dispatch(goToPosition(true));
+                            }
+                          }}
+                        >
+                          {item.name}
+                        </Typography>
+                      ))}
+                      <Typography
+                        style={{
+                          fontFamily: "NeueHaasDisplayLight",
+                          fontSize: "16px ",
+                          marginRight: "5px",
+                          cursor: "pointer",
+                          marginTop: "20px",
+                        }}
+                        onClick={() =>
+                          window.open(
+                            "https://www.linkedin.com/in/simonaxanchova/",
+                            "_blank"
+                          )
+                        }
+                      >
+                        LINKEDIN
+                      </Typography>
+                      <Typography
+                        style={{
+                          fontFamily: "NeueHaasDisplayLight",
+                          fontSize: "16px ",
+                          marginRight: "5px",
+                          cursor: "pointer",
+                        }}
+                        onClick={() =>
+                          window.open(
+                            "https://www.behance.net/simonaxanchova",
+                            "_blank"
+                          )
+                        }
+                      >
+                        BEHANCE
+                      </Typography>
+                    </Grid>
+                    <Grid item xs={1} />
+                  </Grid>
+                )}
               </Grid>
               <Outlet />
             </div>
@@ -184,6 +273,7 @@ export default function Header({ loading }) {
                       fontFamily: "NeueHaasDisplayLight",
                       fontSize: "18px",
                       marginRight: "50px",
+                      marginTop: "15px",
                     }}
                   >
                     Simona Anchova

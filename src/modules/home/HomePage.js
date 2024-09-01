@@ -18,7 +18,12 @@ import { RxOpenInNewWindow } from "react-icons/rx";
 import { ProjectsData } from "../common/ProjectsData";
 import { keyframes, styled } from "@mui/system";
 import { CiGlobe } from "react-icons/ci";
-import { emailSent, homePageHeader } from "../../store/GlobalSlice";
+import {
+  emailSent,
+  goToPosition,
+  openMenu,
+  homePageHeader,
+} from "../../store/GlobalSlice";
 import emailjs from "emailjs-com";
 import Contact from "./Contact";
 import _ from "lodash";
@@ -58,6 +63,18 @@ export default function HomePage({ loading, setLoading }) {
     sender: "",
   });
   const [emailAlertMessage, setEmailAlertMessage] = useState(false);
+  const goToContact = useSelector((state) => state.global.goToPosition);
+
+  useEffect(() => {
+    if (goToContact) {
+      window.scrollTo({
+        top: document.documentElement.scrollHeight,
+        behavior: "smooth",
+      });
+      dispatch(goToPosition(false));
+      dispatch(openMenu(false));
+    }
+  }, [goToContact]);
 
   const technical = [
     "Back End Programming",
@@ -65,6 +82,7 @@ export default function HomePage({ loading, setLoading }) {
     "Java",
     "JavaScript",
     "React.js",
+    "Redux.js",
     "Spring Boot",
     "MySQL",
     "PostgreSQL",
@@ -75,9 +93,12 @@ export default function HomePage({ loading, setLoading }) {
     "GitHub",
     "Web Architecture",
     "Web Design",
+    "Three.js",
+    "Email.js",
     "Viber API",
     "WhatsApp Business API",
     "Material UI",
+    "Adobe Photoshop",
   ];
 
   useEffect(() => {
@@ -95,11 +116,13 @@ export default function HomePage({ loading, setLoading }) {
       dispatch(homePageHeader(false));
     }
 
-    if (position > 700 && position < 850) {
+    if (position > 650 && position < 850) {
       setHoveredProject(0);
-    } else if (position > 850 && position < 1000) {
+    } else if (position > 850 && position < 1100) {
       setHoveredProject(1);
-    } else if (position > 1000 || position < 700) {
+    } else if (position > 1100 || position < 1300) {
+      setHoveredProject(2);
+    } else if (position > 1300 || position < 650) {
       setHoveredProject(null);
     }
 
@@ -176,7 +199,10 @@ export default function HomePage({ loading, setLoading }) {
             <div
               ref={paperRef}
               onScroll={handleScroll}
-              style={{ scrollBehavior: "smooth" }}
+              style={{
+                scrrollBehavior: "smooth",
+                zIndex: 500,
+              }}
             >
               <Grid
                 container
@@ -319,6 +345,7 @@ export default function HomePage({ loading, setLoading }) {
                       fontFamily: "NeueHaasDisplayLight",
                       fontSize: "100px",
                       textTransform: "uppercase",
+                      position: "relative",
                     }}
                   >
                     <MovingTextContainer>
@@ -349,6 +376,7 @@ export default function HomePage({ loading, setLoading }) {
                       style={{
                         padding: "20px",
                         textAlign: "left",
+                        position: "relative",
                       }}
                     >
                       <Typography
@@ -394,7 +422,11 @@ export default function HomePage({ loading, setLoading }) {
                     <Grid
                       item
                       xs={6}
-                      style={{ padding: "20px", textAlign: "left" }}
+                      style={{
+                        padding: "20px",
+                        textAlign: "left",
+                        position: "relative",
+                      }}
                     >
                       <Typography
                         style={{
@@ -420,7 +452,7 @@ export default function HomePage({ loading, setLoading }) {
                             style={{
                               fontFamily: "NeueHaasDisplayLight",
                               textTransform: "none",
-                              fontSize: "22px",
+                              fontSize: "20px",
                               color: "#1f1f1f",
                               marginLeft: "5px",
                             }}
@@ -437,19 +469,20 @@ export default function HomePage({ loading, setLoading }) {
                     xs={12}
                     style={{ display: "flex", marginBottom: "20px" }}
                   >
-                    <Grid item xs={2} />
-                    <Grid item xs={8}>
+                    <Grid item xs={1.5} />
+                    <Grid item xs={9}>
                       {projects.map((project, index) => (
                         <div
                           key={index}
                           style={{
                             display: "flex",
-                            height: "250px",
+                            height: "300px",
                             backgroundColor:
                               hoveredProject === index && "#ffffff",
                             transition: "transform 0.3s ease",
                             cursor: "pointer",
                           }}
+                          onClick={() => console.log(project)}
                         >
                           <Grid
                             item
@@ -466,7 +499,7 @@ export default function HomePage({ loading, setLoading }) {
                           >
                             <Typography
                               style={{
-                                fontFamily: "NeueHaasDisplayRomanItalic",
+                                fontFamily: "NeueHaasDisplayLight",
                                 fontSize: "22px",
                               }}
                             >
@@ -482,26 +515,28 @@ export default function HomePage({ loading, setLoading }) {
                             >
                               {project.date}
                             </Typography>
-                            <div
-                              style={{
-                                display: "flex",
-                                alignItems: "center",
-                                justifyContent: "center",
-                                width: "130px",
-                                height: "35px",
-                                color: "#000000",
-                                fontWeight: "bold",
-                                border: "2px solid black",
-                                backgroundColor: "#b8ff5e",
-                                fontFamily: "NeueHaasDisplayLight",
-                                fontSize: "20px",
-                                marginTop: "18px",
-                                marginLeft: "-40px",
-                                transform: "rotate(5deg)",
-                              }}
-                            >
-                              Made at Aucta
-                            </div>
+                            {project.type == "work" && (
+                              <div
+                                style={{
+                                  display: "flex",
+                                  alignItems: "center",
+                                  justifyContent: "center",
+                                  width: "130px",
+                                  height: "35px",
+                                  color: "#000000",
+                                  fontWeight: "bold",
+                                  border: "2px solid black",
+                                  backgroundColor: "#b8ff5e",
+                                  fontFamily: "NeueHaasDisplayLight",
+                                  fontSize: "20px",
+                                  marginTop: "18px",
+                                  marginLeft: "-40px",
+                                  transform: "rotate(5deg)",
+                                }}
+                              >
+                                Made at Aucta
+                              </div>
+                            )}
                           </Grid>
                           <Grid
                             item
@@ -545,30 +580,32 @@ export default function HomePage({ loading, setLoading }) {
                               padding: "10px",
                             }}
                           >
-                            <div
-                              style={{
-                                border: "1px solid #171718",
-                                padding: "5px",
-                              }}
-                            >
-                              <Typography
+                            {project.backend != "" && (
+                              <div
                                 style={{
-                                  fontFamily: "NeueHaasDisplayLight",
-                                  textTransform: "uppercase",
-                                  fontSize: "13px",
+                                  border: "1px solid #171718",
+                                  padding: "5px",
                                 }}
                               >
-                                Back End
-                              </Typography>
-                              <Typography
-                                style={{
-                                  fontSize: "16px",
-                                  fontFamily: "NeueHaasDisplayRoman",
-                                }}
-                              >
-                                {project.backend}
-                              </Typography>
-                            </div>
+                                <Typography
+                                  style={{
+                                    fontFamily: "NeueHaasDisplayLight",
+                                    textTransform: "uppercase",
+                                    fontSize: "13px",
+                                  }}
+                                >
+                                  Back End
+                                </Typography>
+                                <Typography
+                                  style={{
+                                    fontSize: "16px",
+                                    fontFamily: "NeueHaasDisplayRoman",
+                                  }}
+                                >
+                                  {project.backend}
+                                </Typography>
+                              </div>
+                            )}
                             <div
                               style={{
                                 border: "1px solid #171718",
@@ -594,31 +631,33 @@ export default function HomePage({ loading, setLoading }) {
                                 {project.frontend}
                               </Typography>
                             </div>
-                            <div
-                              style={{
-                                border: "1px solid #171718",
-                                padding: "5px",
-                                marginTop: "5px",
-                              }}
-                            >
-                              <Typography
+                            {project.database != "" && (
+                              <div
                                 style={{
-                                  fontFamily: "NeueHaasDisplayLight",
-                                  textTransform: "uppercase",
-                                  fontSize: "13px",
+                                  border: "1px solid #171718",
+                                  padding: "5px",
+                                  marginTop: "5px",
                                 }}
                               >
-                                Database
-                              </Typography>
-                              <Typography
-                                style={{
-                                  fontSize: "16px",
-                                  fontFamily: "NeueHaasDisplayRoman",
-                                }}
-                              >
-                                {project.database}
-                              </Typography>
-                            </div>
+                                <Typography
+                                  style={{
+                                    fontFamily: "NeueHaasDisplayLight",
+                                    textTransform: "uppercase",
+                                    fontSize: "13px",
+                                  }}
+                                >
+                                  Database
+                                </Typography>
+                                <Typography
+                                  style={{
+                                    fontSize: "16px",
+                                    fontFamily: "NeueHaasDisplayRoman",
+                                  }}
+                                >
+                                  {project.database}
+                                </Typography>
+                              </div>
+                            )}
                           </Grid>
                         </div>
                       ))}

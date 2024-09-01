@@ -15,8 +15,12 @@ export const globalSlice = createSlice({
     emailSent: (state, action) => {
       state.emailSent = action.payload;
     },
+    goToPosition: (state, action) => {
+      state.goToPosition = action.payload;
+    },
   },
 });
 
-export const { openMenu, homePageHeader, emailSent } = globalSlice.actions;
+export const { openMenu, homePageHeader, emailSent, goToPosition } =
+  globalSlice.actions;
 export default globalSlice.reducer;
