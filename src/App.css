@@ -50,57 +50,7 @@
 }
 
 @font-face {
-  font-family: "NeueHaasDisplayRoman";
-  src: local("NeueHaasDisplayRoman"),
-    url("./../public/assets/fonts/NeueHaasDisplayRoman.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "NeueHaasDisplayBold";
-  src: local("NeueHaasDisplayBold"),
-    url("./../public/assets/fonts/NeueHaasDisplayBold.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "Supply-Regular";
-  src: local("Supply-Regular"),
-    url("./../public/assets/fonts/Supply-Regular.otf") format("truetype");
-}
-
-@font-face {
-  font-family: "PPPangaia-Medium";
-  src: local("PPPangaia-Medium"),
-    url("./../public/assets/fonts/PPPangaia-Medium.otf") format("truetype");
-}
-
-@font-face {
-  font-family: "PPFragment-GlareExtraBold";
-  src: local("PPFragment-GlareExtraBold"),
-    url("./../public/assets/fonts/PPFragment-GlareExtraBold.otf")
-      format("truetype");
-}
-@font-face {
-  font-family: "NeueHaasDisplayRomanItalic";
-  src: local("NeueHaasDisplayRomanItalic"),
-    url("./../public/assets/fonts/NeueHaasDisplayRomanItalic.ttf")
-      format("truetype");
-}
-@font-face {
-  font-family: "NeueHaasDisplayLightItalic";
-  src: local("NeueHaasDisplayLightItalic"),
-    url("./../public/assets/fonts/NeueHaasDisplayLightItalic.ttf")
-      format("truetype");
-}
-
-@font-face {
-  font-family: "FFF-AcidGrotesk-Bold";
-  src: local("FFF-AcidGrotesk-Bold"),
-    url("./../public/assets/fonts/FFF-AcidGrotesk-Bold.otf") format("truetype");
-}
-
-@font-face {
-  font-family: "FFF-AcidGrotesk-ExtraBold";
-  src: local("FFF-AcidGrotesk-ExtraBold"),
-    url("./../public/assets/fonts/FFF-AcidGrotesk-ExtraBold.otf")
-      format("truetype");
+  font-family: "Inter-Light";
+  src: local("Inter-Light"),
+    url("./../public/assets/fonts/Inter-Light.ttf") format("truetype");
 }
