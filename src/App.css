@@ -54,3 +54,15 @@
   src: local("Inter-Light"),
     url("./../public/assets/fonts/Inter-Light.ttf") format("truetype");
 }
+
+@font-face {
+  font-family: "Inter-Regular";
+  src: local("Inter-Regular"),
+    url("./../public/assets/fonts/Inter-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Inter-Thin";
+  src: local("Inter-Thin"),
+    url("./../public/assets/fonts/Inter-Thin.ttf") format("truetype");
+}
