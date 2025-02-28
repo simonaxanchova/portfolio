@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.ccdfa392.css",
-    "main.js": "/static/js/main.36f082ba.js",
+    "main.js": "/static/js/main.68fa12b5.js",
     "static/js/453.c57cf805.chunk.js": "/static/js/453.c57cf805.chunk.js",
     "static/media/Inter-Light.ttf": "/static/media/Inter-Light.8583bd6fce14da34ea43.ttf",
     "static/media/Inter-Thin.ttf": "/static/media/Inter-Thin.1c5b9a0ebc7e6abf82c8.ttf",
@@ -10,11 +10,11 @@
     "static/media/NeueHaasDisplayLight.ttf": "/static/media/NeueHaasDisplayLight.46f0c2f76453ff7dcfba.ttf",
     "index.html": "/index.html",
     "main.ccdfa392.css.map": "/static/css/main.ccdfa392.css.map",
-    "main.36f082ba.js.map": "/static/js/main.36f082ba.js.map",
+    "main.68fa12b5.js.map": "/static/js/main.68fa12b5.js.map",
     "453.c57cf805.chunk.js.map": "/static/js/453.c57cf805.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ccdfa392.css",
-    "static/js/main.36f082ba.js"
+    "static/js/main.68fa12b5.js"
   ]
 }
