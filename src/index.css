@@ -135,11 +135,39 @@ code {
 
 #main-grid-text {
   font-family: NeueHaasDisplayLight;
-  font-size: 60px;
+  font-size: 3.8em;
   color: #e5e5e5;
   text-transform: uppercase;
   line-height: 1.1;
   padding: 0;
+}
+
+/* 100% */
+@media (max-width: 2100px) {
+  #main-grid-text {
+    font-size: 60px;
+  }
+}
+
+/* 110% */
+@media (max-width: 1900px) {
+  #main-grid-text {
+    font-size: 55px;
+  }
+}
+
+/* 125% */
+@media (max-width: 1700px) {
+  #main-grid-text {
+    font-size: 50px;
+  }
+}
+
+/* 150% */
+@media (max-width: 1500px) {
+  #main-grid-text {
+    font-size: 38px;
+  }
 }
 
 #main-grid-2 {
@@ -161,6 +189,34 @@ code {
   color: #e5e5e5;
   line-height: 1;
   padding: 0 0 0 40px;
+}
+
+/* 100% */
+@media (max-width: 2100px) {
+  #description-text {
+    font-size: 15px;
+  }
+}
+
+/* 110% */
+@media (max-width: 1900px) {
+  #description-text {
+    font-size: 15px;
+  }
+}
+
+/* 125% */
+@media (max-width: 1700px) {
+  #description-text {
+    font-size: 13px;
+  }
+}
+
+/* 150% */
+@media (max-width: 1500px) {
+  #description-text {
+    font-size: 10px;
+  }
 }
 
 #work-grid {
@@ -303,7 +359,6 @@ code {
 .pixel-container-2,
 .pixel-container-1 {
   display: grid;
-  /* gap: 1px; */
   justify-self: center;
   align-self: center;
   justify-content: center;
