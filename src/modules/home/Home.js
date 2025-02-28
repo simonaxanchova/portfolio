@@ -447,7 +447,7 @@ export default function Home() {
             backgroundAttachment: "fixed",
           }}
         >
-          <Grid item xs={12} style={{ padding: "16px", display: "flex" }}>
+          <Grid item xs={12} style={{ display: "flex" }}>
             <Grid
               item
               xs={6}
@@ -485,7 +485,32 @@ export default function Home() {
               </Typography>
             </Grid>
           </Grid>
-
+          <Grid
+            item
+            style={{
+              padding: "5px 0",
+              justifyContent: "space-around",
+              display: "flex",
+            }}
+          >
+            {items.map((item) => (
+              <div
+                className="header-outside-link-div"
+                onClick={() => {
+                  if (item.name === "Contact") {
+                    window.location.href = item.link;
+                    return;
+                  } else {
+                    window.open(item.link, "_blank");
+                  }
+                }}
+              >
+                <Typography id="header-outside-link">
+                  [{item.name.slice(0, 1)}] {item.name}
+                </Typography>
+              </div>
+            ))}
+          </Grid>
           <Grid
             item
             style={{
@@ -512,7 +537,6 @@ export default function Home() {
               <br />
               Anchova
             </Typography>
-
             <Typography
               className="typography-invert"
               style={{
@@ -532,33 +556,6 @@ export default function Home() {
               problem-solving, combining technical excellence with a keen eye
               for user experience.
             </Typography>
-          </Grid>
-
-          <Grid
-            item
-            style={{
-              padding: "16px",
-              justifyContent: "space-around",
-              display: "flex",
-            }}
-          >
-            {items.map((item) => (
-              <div
-                className="header-outside-link-div"
-                onClick={() => {
-                  if (item.name === "Contact") {
-                    window.location.href = item.link;
-                    return;
-                  } else {
-                    window.open(item.link, "_blank");
-                  }
-                }}
-              >
-                <Typography id="header-outside-link">
-                  [{item.name.slice(0, 1)}] {item.name}
-                </Typography>
-              </div>
-            ))}
           </Grid>
         </Grid>
       </Hidden>
