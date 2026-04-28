@@ -32,6 +32,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -65,4 +66,43 @@
   font-family: "Inter-Thin";
   src: local("Inter-Thin"),
     url("./../public/assets/fonts/Inter-Thin.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "InstrumentSerif-Regular";
+  src: local("InstrumentSerif-Regular"),
+    url("./../public/assets/fonts/InstrumentSerif-Regular.ttf")
+      format("truetype");
+}
+
+@font-face {
+  font-family: "InstrumentSerif-Italic";
+  src: local("InstrumentSerif-Italic"),
+    url("./../public/assets/fonts/InstrumentSerif-Italic.ttf")
+      format("truetype");
+}
+
+@font-face {
+  font-family: "Aeonik-Regular";
+  src: local("Aeonik-Regular"),
+    url("./../public/assets/fonts/Aeonik-Regular.otf") format("truetype");
+}
+
+@font-face {
+  font-family: "GeneralSans-Regular";
+  src: local("GeneralSans-Regular"),
+    url("./../public/assets/fonts/GeneralSans-Regular.otf") format("truetype");
+}
+
+@font-face {
+  font-family: "GeneralSans-Extralight";
+  src: local("GeneralSans-Extralight"),
+    url("./../public/assets/fonts/GeneralSans-Extralight.otf")
+      format("truetype");
+}
+
+@font-face {
+  font-family: "GeneralSans-Medium";
+  src: local("GeneralSans-Medium"),
+    url("./../public/assets/fonts/GeneralSans-Medium.otf") format("truetype");
 }
