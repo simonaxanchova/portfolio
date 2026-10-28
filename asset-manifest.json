@@ -1,20 +1,26 @@
 {
   "files": {
-    "main.css": "/static/css/main.ccdfa392.css",
-    "main.js": "/static/js/main.68fa12b5.js",
+    "main.css": "/static/css/main.90216df6.css",
+    "main.js": "/static/js/main.1d9e5f10.js",
     "static/js/453.c57cf805.chunk.js": "/static/js/453.c57cf805.chunk.js",
     "static/media/Inter-Light.ttf": "/static/media/Inter-Light.8583bd6fce14da34ea43.ttf",
     "static/media/Inter-Thin.ttf": "/static/media/Inter-Thin.1c5b9a0ebc7e6abf82c8.ttf",
     "static/media/Inter-Regular.ttf": "/static/media/Inter-Regular.86c330c66f7333ff6202.ttf",
     "static/media/NeueHaasDisplayMedium.ttf": "/static/media/NeueHaasDisplayMedium.32921edb532f55cbfdc6.ttf",
     "static/media/NeueHaasDisplayLight.ttf": "/static/media/NeueHaasDisplayLight.46f0c2f76453ff7dcfba.ttf",
+    "static/media/InstrumentSerif-Italic.ttf": "/static/media/InstrumentSerif-Italic.9e860caa09c61b51b60c.ttf",
+    "static/media/InstrumentSerif-Regular.ttf": "/static/media/InstrumentSerif-Regular.dd726bb91a354547f0d3.ttf",
+    "static/media/GeneralSans-Medium.otf": "/static/media/GeneralSans-Medium.9e7904e31d714524f2d9.otf",
+    "static/media/GeneralSans-Regular.otf": "/static/media/GeneralSans-Regular.8b8c806d335280408bfe.otf",
+    "static/media/GeneralSans-Extralight.otf": "/static/media/GeneralSans-Extralight.cd60a54aa4d6ac70a508.otf",
+    "static/media/Aeonik-Regular.otf": "/static/media/Aeonik-Regular.f252af9282d8460f6582.otf",
     "index.html": "/index.html",
-    "main.ccdfa392.css.map": "/static/css/main.ccdfa392.css.map",
-    "main.68fa12b5.js.map": "/static/js/main.68fa12b5.js.map",
+    "main.90216df6.css.map": "/static/css/main.90216df6.css.map",
+    "main.1d9e5f10.js.map": "/static/js/main.1d9e5f10.js.map",
     "453.c57cf805.chunk.js.map": "/static/js/453.c57cf805.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ccdfa392.css",
-    "static/js/main.68fa12b5.js"
+    "static/css/main.90216df6.css",
+    "static/js/main.1d9e5f10.js"
   ]
 }
